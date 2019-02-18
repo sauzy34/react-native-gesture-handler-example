@@ -1,16 +1,16 @@
 import React from 'react'
-import { Text, View } from 'react-native'
-import { Header } from '../components'
+import { View } from 'react-native'
+import { StyledText } from '../components/StyledComponents'
 
 export default class HomeScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: <Header headerTitle="Home" leftIcon={'arrowBack'} onPressLeft={() => navigation.goBack()} />
-  })
+  static navigationOptions = {
+    headerTitle: 'Home'
+  }
 
   render() {
     return (
       <View>
-        <Text>HomeScreen</Text>
+        <StyledText fontSize="20px">Home</StyledText>
       </View>
     )
   }

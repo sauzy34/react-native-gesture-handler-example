@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "creatanium-native",
+    "name": "Native App",
     "description": "A very interesting project.",
-    "slug": "creatanium-native",
+    "slug": "Native App",
     "privacy": "public",
-    "sdkVersion": "31.0.0",
+    "sdkVersion": "32.0.0",
     "platforms": [
       "ios",
       "android"
@@ -25,6 +25,9 @@
     ],
     "ios": {
       "supportsTablet": true
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#078489"
     }
   }
 }

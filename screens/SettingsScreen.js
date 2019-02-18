@@ -1,16 +1,15 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-import { Header } from '../components'
-
+import { View } from 'react-native'
+import { StyledText } from '../components'
 export default class SettingsScreen extends React.Component {
-  static navigationOptions = ({ navigation }) => ({
-    header: <Header headerTitle="Settings" leftIcon={'arrowBack'} onPressLeft={() => navigation.goBack()} />
-  })
+  static navigationOptions = {
+    headerTitle: 'Settings'
+  }
 
   render() {
     return (
       <View>
-        <Text>LinksScreen</Text>
+        <StyledText fontSize="20px">Settings</StyledText>
       </View>
     )
   }

@@ -1,11 +1,19 @@
 import React from 'react'
-import { Platform, StatusBar, StyleSheet, View } from 'react-native'
+import { NetInfo, Platform, StatusBar, StyleSheet, View, SafeAreaView } from 'react-native'
 import { AppLoading, Asset, Font, Icon } from 'expo'
 import AppNavigator from './navigation/AppNavigator'
+import { ThemeProvider } from 'styled-components'
+import Colors from './constants/Colors'
 
 export default class App extends React.Component {
   state = {
-    isLoadingComplete: false
+    isLoadingComplete: false,
+    isConnected: true
+  }
+  componentDidMount() {
+    NetInfo.isConnected.addEventListener('connectionChange', isConnected => {
+      this.setState({ isConnected })
+    })
   }
 
   render() {
@@ -17,12 +25,24 @@ export default class App extends React.Component {
           onFinish={this._handleFinishLoading}
         />
       )
+    } else if (!this.state.isConnected) {
+      return <View style={styles.container}>{alert('Not Internet Connection')}</View>
     } else {
       return (
-        <View style={styles.container}>
-          {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
-          <AppNavigator />
-        </View>
+        <ThemeProvider theme={Colors}>
+          <React.Fragment>
+            <SafeAreaView style={{ backgroundColor: '#fff' }}>
+              <View style={styles.container}>
+                {Platform.OS === 'ios' ? (
+                  <React.Fragment />
+                ) : (
+                  <StatusBar backgroundColor={'#078489'} barStyle="dark-content" />
+                )}
+              </View>
+            </SafeAreaView>
+            <AppNavigator />
+          </React.Fragment>
+        </ThemeProvider>
       )
     }
   }
