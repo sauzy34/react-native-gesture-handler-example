@@ -27,6 +27,7 @@
   "devDependencies": {
     "babel-eslint": "^8.2.2",
     "babel-preset-expo": "^5.0.0",
+    "babel-plugin-transform-remove-console": "^6.9.4",
     "eslint": "^4.19.1",
     "eslint-config-prettier": "^2.3.0",
     "eslint-config-react-app": "^2.0.1",
