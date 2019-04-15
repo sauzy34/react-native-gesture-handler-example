@@ -10,6 +10,7 @@ export default {
   grey1: '#656565',
   grey2: '#8C8C8C',
   grey3: '#9c9c9c',
+  white: '#fff',
 
   tintColor,
   tabIconDefault: '#ccc',

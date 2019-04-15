@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "Native App",
+    "name": "NativeApp",
     "description": "A very interesting project.",
-    "slug": "Native App",
+    "slug": "NativeApp",
     "privacy": "public",
     "sdkVersion": "32.0.0",
     "platforms": [
