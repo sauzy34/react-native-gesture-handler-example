@@ -36,6 +36,9 @@ const FlexWrapper = styled(View)`
   background: ${props => props.background || 'transparent'};
   border-radius: ${props => props.borderRadius || '0'};
   position: ${props => props.position || 'relative'};
+  border-radius: ${props => props.borderRadius || '15px'};
+  border-width: ${props => props.borderWidth || '0px'};
+  border-color: ${props => props.borderColor || Colors.white};
 `
 const TouchableFlex = styled(TouchableOpacity)`
   flex-direction: ${props => props.direction || 'column'};
@@ -44,9 +47,15 @@ const TouchableFlex = styled(TouchableOpacity)`
   margin: ${props => props.viewMargin || '0px'};
   padding: ${props => props.viewPadding || '0px'};
   width: ${props => props.width || 'auto'};
+  height: ${props => props.height || 'auto'};
   flex-basis: ${props => props.flexBasis || 'auto'};
   flex-wrap: ${props => props.flexWrap || 'nowrap'};
   background: ${props => props.background || 'transparent'};
+  border-radius: ${props => props.borderRadius || '0'};
+  position: ${props => props.position || 'relative'};
+  border-radius: ${props => props.borderRadius || '15px'};
+  border-width: ${props => props.borderWidth || '0px'};
+  border-color: ${props => props.borderColor || Colors.white};
 `
 
 const StyledImage = styled(Image)`
@@ -74,5 +83,11 @@ const Arrow = styled(View)`
   border-color: ${props => props.borderColor || Colors.primary};
   transform: ${props => props.rotate || 'rotate(225deg)'};
 `
+const Overlay = styled(View)`
+  height: 100%;
+  width: 100%;
+  background-color: ${props => props.backgroundColor || 'rgba(0, 0, 0, 0.3)'};
+  position: absolute;
+`
 
-export { StyledText, FlexWrapper, TouchableFlex, StyledImage, BgImage, StyledScrollView, Arrow }
+export { StyledText, FlexWrapper, TouchableFlex, StyledImage, BgImage, StyledScrollView, Arrow, Overlay }
