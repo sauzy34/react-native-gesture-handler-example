@@ -11,7 +11,7 @@ const tabStyle = {
       backgroundColor: Colors.primary || '#00B7AF',
       height: 40,
       color: '#fff',
-      elevation: 0
+      elevation: 4
     },
     headerTitleStyle: {
       fontSize: 17
