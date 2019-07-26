@@ -4,7 +4,7 @@
     "description": "A very interesting project.",
     "slug": "NativeApp",
     "privacy": "public",
-    "sdkVersion": "32.0.0",
+    "sdkVersion": "33.0.0",
     "platforms": [
       "ios",
       "android"
@@ -27,7 +27,7 @@
       "supportsTablet": true
     },
     "androidStatusBar": {
-      "backgroundColor": "#078489"
+      "backgroundColor": "#546e7a"
     }
   }
 }

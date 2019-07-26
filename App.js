@@ -31,12 +31,12 @@ export default class App extends React.Component {
       return (
         <ThemeProvider theme={Colors}>
           <React.Fragment>
-            <SafeAreaView style={{ backgroundColor: '#fff' }}>
+            <SafeAreaView style={{ backgroundColor: '#546e7a' }}>
               <View style={styles.container}>
                 {Platform.OS === 'ios' ? (
                   <React.Fragment />
                 ) : (
-                  <StatusBar backgroundColor={'#078489'} barStyle="dark-content" />
+                  <StatusBar backgroundColor={'#546e7a'} barStyle="dark-content" />
                 )}
               </View>
             </SafeAreaView>

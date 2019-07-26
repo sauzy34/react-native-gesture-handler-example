@@ -1,8 +1,8 @@
 const tintColor = '#2f95dc'
 
 export default {
-  primary: '#078489',
-  secondary: '#124b5f',
+  primary: '#546e7a',
+  secondary: '#000',
   tertiary: '#f7f1e3',
   cta1: '#F98181',
   cta2: '#51C76D',
