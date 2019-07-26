@@ -18,7 +18,7 @@ const Icon = ({ name, fill, width, bottomColor, height, viewBox, ...otherProps }
       content: (
         <Path
           fill={fill || Colors.primary}
-          fillOpacity=".54"
+          fillOpacity="1"
           fillRule="evenodd"
           d="M8.794 14.848a6.056 6.056 0 1 1 6.055-6.055 6.048 6.048 0 0 1-6.04 6.055h-.015zm8.074 0h-1.063l-.377-.363a8.771 8.771 0 0 0-.943-12.368 8.77 8.77 0 0 0-12.369.942 8.771 8.771 0 0 0 12.369 12.368l.364.377v1.063l5.72 5.72a1.42 1.42 0 0 0 2.003 0 1.421 1.421 0 0 0 0-2.006l-5.704-5.733z"
         />
