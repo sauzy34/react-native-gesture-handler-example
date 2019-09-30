@@ -1,5 +1,7 @@
 import React from 'react'
-import { createBottomTabNavigator, createStackNavigator, createAppContainer } from 'react-navigation'
+import { createAppContainer } from 'react-navigation'
+import { createStackNavigator } from 'react-navigation-stack'
+import { createBottomTabNavigator } from 'react-navigation-tabs'
 import { FlexWrapper, Icon } from '../components'
 import { HomeScreen, LinksScreen, SettingsScreen } from '../screens'
 import Colors from '../constants/Colors'
