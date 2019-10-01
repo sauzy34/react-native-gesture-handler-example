@@ -1,8 +1,8 @@
 {
   "expo": {
-    "name": "NativeApp",
+    "name": "react-native-gesture-handler-demo",
     "description": "A very interesting project.",
-    "slug": "NativeApp",
+    "slug": "react-native-gesture-handler-demo",
     "privacy": "public",
     "sdkVersion": "35.0.0",
     "platforms": [

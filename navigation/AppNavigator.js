@@ -1,85 +1,154 @@
 import React from 'react'
+import { Text, View, FlatList, StyleSheet, YellowBox } from 'react-native'
 import { createAppContainer } from 'react-navigation'
 import { createStackNavigator } from 'react-navigation-stack'
-import { createBottomTabNavigator } from 'react-navigation-tabs'
-import { FlexWrapper, Icon } from '../components'
-import { HomeScreen, LinksScreen, SettingsScreen } from '../screens'
-import Colors from '../constants/Colors'
+import { RectButton, ScrollView } from 'react-native-gesture-handler'
 
-const tabStyle = {
-  defaultNavigationOptions: {
-    headerTintColor: '#fff',
-    headerStyle: {
-      backgroundColor: Colors.primary || '#00B7AF',
-      height: 40,
-      color: '#fff',
-      elevation: 4
-    },
-    headerTitleStyle: {
-      fontSize: 17
+import SwipeableTable from '../components/example/swipeable'
+import Rows from '../components/example/rows'
+import Multitap from '../components/example/multitap'
+import Draggable from '../components/example/draggable'
+import ScaleAndRotate from '../components/example/scaleAndRotate'
+import PagerAndDrawer from '../components/example/pagerAndDrawer'
+import PanAndScroll from '../components/example/panAndScroll'
+import PanResponder from '../components/example/panResponder'
+import Bouncing from '../components/example/bouncing'
+import HorizontalDrawer from '../components/example/horizontalDrawer'
+import Fling from '../components/example/fling/index'
+import doubleDraggable from '../components/example/doubleDraggable'
+// import ChatHeads from '../components/example/chatHeads'
+import { ComboWithGHScroll, ComboWithRNScroll } from '../components/example/combo'
+import BottomSheet from '../components/example/bottomSheet/index'
+import doubleScalePinchAndRotate from '../components/example/doubleScalePinchAndRotate'
+import forceTouch from '../components/example/forcetouch'
+import { TouchablesIndex, TouchableExample } from '../components/example/touchables'
+
+YellowBox.ignoreWarnings(['Warning: isMounted(...) is deprecated', 'Module RCTImageLoader'])
+// refers to bug in React Navigation which should be fixed soon
+// https://github.com/react-navigation/react-navigation/issues/3956
+
+const SCREENS = {
+  Rows: { screen: Rows, title: 'Table rows & buttons' },
+  Multitap: { screen: Multitap },
+  Draggable: { screen: Draggable },
+  ScaleAndRotate: { screen: ScaleAndRotate, title: 'Scale, rotate & tilt' },
+  ScaleAndRotateSimultaneously: {
+    screen: doubleScalePinchAndRotate,
+    title: 'Scale, rotate & tilt & more'
+  },
+  PagerAndDrawer: { screen: PagerAndDrawer, title: 'Android pager & drawer' },
+  HorizontalDrawer: {
+    screen: HorizontalDrawer,
+    title: 'Gesture handler based DrawerLayout'
+  },
+  SwipeableTable: {
+    screen: SwipeableTable,
+    title: 'Gesture handler based SwipeableRow'
+  },
+  PanAndScroll: {
+    screen: PanAndScroll,
+    title: 'Horizontal pan or tap in ScrollView'
+  },
+  Fling: {
+    screen: Fling,
+    title: 'Flinghandler'
+  },
+  PanResponder: { screen: PanResponder },
+  Bouncing: { screen: Bouncing, title: 'Twist & bounce back animation' },
+  // ChatHeads: {
+  //   screen: ChatHeads,
+  //   title: 'Chat Heads (no native animated support yet)',
+  // },
+  Combo: { screen: ComboWithGHScroll },
+  BottomSheet: {
+    title: 'BottomSheet gestures interactions',
+    screen: BottomSheet
+  },
+  ComboWithRNScroll: {
+    screen: ComboWithRNScroll,
+    title: "Combo with RN's ScrollView"
+  },
+  doubleDraggable: {
+    screen: doubleDraggable,
+    title: 'Two handlers simultaneously'
+  },
+  touchables: {
+    screen: TouchablesIndex,
+    title: 'Touchables'
+  },
+  forceTouch: {
+    screen: forceTouch,
+    title: 'Force touch'
+  }
+}
+
+class MainScreen extends React.Component {
+  static navigationOptions = {
+    title: '✌️ Gesture Handler Demo'
+  }
+  render() {
+    const data = Object.keys(SCREENS).map(key => ({ key }))
+    return (
+      <FlatList
+        style={styles.list}
+        data={data}
+        ItemSeparatorComponent={ItemSeparator}
+        renderItem={props => (
+          <MainScreenItem {...props} onPressItem={({ key }) => this.props.navigation.navigate(key)} />
+        )}
+        renderScrollComponent={props => <ScrollView {...props} />}
+      />
+    )
+  }
+}
+
+const ItemSeparator = () => <View style={styles.separator} />
+
+class MainScreenItem extends React.Component {
+  _onPress = () => this.props.onPressItem(this.props.item)
+  render() {
+    const { key } = this.props.item
+    return (
+      <RectButton style={styles.button} onPress={this._onPress}>
+        <Text style={styles.buttonText}>{SCREENS[key].title || key}</Text>
+      </RectButton>
+    )
+  }
+}
+
+const ExampleApp = createStackNavigator(
+  {
+    Main: { screen: MainScreen },
+    ...SCREENS,
+    TouchableExample: {
+      screen: TouchableExample,
+      title: 'Touchables'
     }
   },
-  headerMode: 'float',
-  headerLayoutPreset: 'center',
-  headerBackTitleVisible: false
-}
-const TabIcon = props => (
-  <FlexWrapper justifyContent="center" alignItems="center" pointerEvents="none">
-    <Icon fill={props.focused && Colors.secondary} name={props.icon || 'review'} width={28} height={28} />
-  </FlexWrapper>
-)
-const HomeStack = createStackNavigator(
   {
-    Home: HomeScreen
-  },
-  { ...tabStyle }
-)
-
-const LinksStack = createStackNavigator(
-  {
-    Links: LinksScreen
-  },
-  { ...tabStyle }
-)
-
-const SettingsStack = createStackNavigator(
-  {
-    Settings: SettingsScreen
-  },
-  { ...tabStyle }
-)
-
-const TabNavigation = createBottomTabNavigator(
-  {
-    HomeStack,
-    LinksStack,
-    SettingsStack
-  },
-  {
-    defaultNavigationOptions: ({ navigation }) => ({
-      tabBarIcon: ({ focused, tintColor }) => {
-        const { routeName } = navigation.state
-        if (routeName === 'HomeStack') {
-          return <TabIcon icon="home" focused={focused} />
-        } else if (routeName === 'SettingsStack') {
-          return <TabIcon icon="search" focused={focused} />
-        } else if (routeName === 'LinksStack') {
-          return <TabIcon icon="account" focused={focused} />
-        }
-      }
-    }),
-    tabBarOptions: {
-      showLabel: false,
-      activeTintColor: '#000',
-      style: {
-        backgroundColor: '#fff',
-        height: 55,
-        paddingTop: 5
-      }
-    },
-    initialRouteName: 'HomeStack'
+    initialRouteName: 'Main'
   }
 )
 
-const AppContainer = createAppContainer(TabNavigation)
-export default AppContainer
+const styles = StyleSheet.create({
+  list: {
+    backgroundColor: '#EFEFF4'
+  },
+  separator: {
+    height: 1,
+    backgroundColor: '#DBDBE0'
+  },
+  buttonText: {
+    backgroundColor: 'transparent'
+  },
+  button: {
+    flex: 1,
+    height: 60,
+    padding: 10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff'
+  }
+})
+
+export default createAppContainer(ExampleApp)

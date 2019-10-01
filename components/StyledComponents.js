@@ -1,7 +1,6 @@
 import { View, Text, TouchableOpacity, Image, ImageBackground } from 'react-native'
 import Colors from '../constants/Colors'
 import styled from 'styled-components/native'
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view'
 
 const StyledText = styled(Text)`
   width: ${props => props.width || 'auto'};
@@ -69,11 +68,6 @@ const BgImage = styled(ImageBackground)`
   width: ${props => props.width || '100%'};
   height: ${props => props.height || '100%'};
   margin: ${props => props.imageMargin || '0'};
-`
-const StyledScrollView = styled(KeyboardAwareScrollView)`
-  padding: ${props => props.viewPadding || '20px 16px'};
-  background: ${props => props.background || 'transparent'};
-  flex: 1;
 `
 const Arrow = styled(View)`
   width: ${props => props.size || '7px'};
