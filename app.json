@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "react-native-gesture-handler-demo",
-    "description": "A very interesting project.",
+    "description": "Example app for React Native Gesture Handler",
     "slug": "react-native-gesture-handler-demo",
     "privacy": "public",
     "sdkVersion": "35.0.0",
@@ -21,13 +21,14 @@
       "fallbackToCacheTimeout": 0
     },
     "assetBundlePatterns": [
-      "**/*"
+      "./assets/"
     ],
     "ios": {
       "supportsTablet": true
     },
     "androidStatusBar": {
       "backgroundColor": "#546e7a"
-    }
+    },
+    "githubUrl": "https://github.com/sauzy34/react-native-gesture-handler-example"
   }
 }
